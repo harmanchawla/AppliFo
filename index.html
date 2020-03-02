@@ -1,16 +1,35 @@
 <!DOCTYPE html>
     <head >
-        <link rel="stylesheet" type="text/css" href="./style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/bulma.css">
+        <link rel="stylesheet" type="text/css" href="./css/burma.min.css" />
     </head>
     <body>
-        <div style="margin:0;overflow:hidden;min-height:200px; min-width: 300px;"> 
-            <h3>Save Job to Google Sheets</h3>
-            <form>
-                <label> Select Link: </label>
-                <input type="radio" id="prev-link" /> Previous Link
-                <input type="radio" id="curr-link" checked /> Current Link
-            </form>
+        <div class="main">
+            <div class="header">
+                <!-- <img src="" /> -->
+                <b> <span id="app-name"> applifo  </span> </span> <span id="header-chrome"> for Chrome </span> </b>
+                <a class="text-banner" href="#"> <span id="link" > SOURCE CODE </span> </a>
+            </div>
+            
+            <hr> 
+            <div style="overflow:hidden;min-height:300px; min-width: 350px;"> 
+                <form>
+                    <div class="field">
+                        <label class="form-label"> Select Link: </label>
+                        <div class="control">
+                            <div class="select is-info">
+                                <select>
+                                    <option>Current Page</option>
+                                    <option>Previous Page</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="button">Open Google Sheets</button>
+                </form>
+            </div>
         </div>
-        
     </body>
 </html>

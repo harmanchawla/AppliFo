@@ -1,0 +1,39 @@
+h3 {
+    text-align: center;
+}
+
+#app-name {
+    background: url(../resouces/images/header.jpg);
+    color: white;
+    padding-left: 2.2%;
+    padding-right: 1.2%;
+    padding-top: 1%;
+    padding-bottom: 1.5%;
+    border-radius: 25px;
+    margin-right: 2%;
+}
+
+#header-chrome {
+    color: grey;
+}
+
+.header {
+    padding-top: 4%;
+    padding-left: 4%;
+    display: block;
+}
+
+
+.text-banner {
+    background-color: #f2d600;
+    border-left: none;
+    text-align: center;
+    float: right;
+    overflow: auto;
+}
+
+#link {
+    color: white;
+    font-size: 75%;
+
+}
