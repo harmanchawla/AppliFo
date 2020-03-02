@@ -5,6 +5,7 @@
     "manifest_version": 2,
     "browser_action": {
         "default_popup": "index.html"
+        
     },
     "commands": {
         "_execute_browser_action": {
@@ -12,7 +13,18 @@
                 "default": "Ctrl+Shift+V",
                 "mac": "Command+Shift+V"
             },
-            "description": "Opens index.html"
+            "description": "Opens the extension and copies the string. Optionally opens the google sheets page."
         }
+    },
+    "permissions": [
+        "activeTab",
+        "contextMenus",
+        "storage"
+    ],
+    "icons": {
+        "16": "16.png",
+        "32": "32.png",
+        "48": "48.png",
+        "128": "128.png"
     }
 }
