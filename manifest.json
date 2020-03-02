@@ -9,8 +9,8 @@
     "commands": {
         "_execute_browser_action": {
             "suggested_key": {
-                "default": "Ctrl+A",
-                "mac": "MacCtrl+A"
+                "default": "Ctrl+Shift+V",
+                "mac": "Command+Shift+V"
             },
             "description": "Opens index.html"
         }
