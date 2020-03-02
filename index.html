@@ -1,22 +1,32 @@
 <!DOCTYPE html>
-    <head >
-        <link rel="stylesheet" type="text/css" href="./css/style.css" />
-        <link rel="stylesheet" type="text/css" href="./css/bulma.css">
-        <link rel="stylesheet" type="text/css" href="./css/burma.min.css" />
+    <head>
+        <link rel="stylesheet" type="text/css" href="./resouces/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./resouces/css/bulma.css" />
+        <link rel="stylesheet" type="text/css" href="./resouces/css/bulma.min.css" />
+        <!-- <script src="./resouces/scripts/jQuery-3.4.1.js"> </script>  -->
+        <script src="./resouces/scripts/index.js"> </script>
     </head>
+    
     <body>
         <div class="main">
             <div class="header">
-                <!-- <img src="" /> -->
                 <b> <span id="app-name"> applifo  </span> </span> <span id="header-chrome"> for Chrome </span> </b>
                 <a class="text-banner" href="https://github.com/harmanchawla/AppliFo" target="_blank"> <span id="link" href="https://github.com/harmanchawla/AppliFo"> SOURCE CODE </span> </a>
             </div>
             <div class="form"> 
-                <form>
+                <form id="main-form">
                     <div class="form-element">
-                        <label class="form-label"> Add date and time </label>
+                        <label class="form-label"> Add date </label>
                         <label class="switch">
-                            <input type="checkbox">
+                            <input type="checkbox" id="input-date">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-element">
+                        <label class="form-label"> Add time </label>
+                        <label class="switch">
+                            <input type="checkbox" id="input-time">
                             <span class="slider round"></span>
                         </label>
                     </div>
@@ -24,7 +34,7 @@
                     <div class="form-element">
                         <label class="form-label"> Add organization name </label>
                         <label class="switch">
-                            <input type="checkbox">
+                            <input type="checkbox" id="input-org">
                             <span class="slider round"></span>
                         </label>
                     </div>
@@ -47,11 +57,16 @@
                 </form>
             </div>
         </div>
+        <p id="message"> </p>
         <footer> 
-            <a href="#"> 
-                <img src="./resouces/images/google-sheets icon.png" id="image" />
-                Open Google Sheets
-            </a>
+            <div id="footer"> 
+                <span>
+                    <a href="#" id="open-sheets" onclick="handleSheetsLink()" target="_blank">
+                        <img src="./resouces/images/google-sheets icon.png" id="image" />
+                        <span class="link-text"> Open Google Sheets </span>
+                    </a>
+                </span>
+            </div>
         </footer>
     </body>
 </html>
