@@ -21,6 +21,26 @@ var addZero = (num) => {
     return num;
 }
 
+var getOrganizatin = (url) => {
+
+    if (url.includes("boards.greenhouse.io") || url.includes("jobs.lever.co")) {
+        var parse = url.split("/");
+        return parse[3];
+    }
+    if (url.includes("myworkdayjobs")) {
+        var parse = url.split("/");
+        var org = parse[2].split(".")[0];
+        return org;
+    }
+    if (url.includes(taleo)) {
+        var parse = url.split("/");
+        var org = parse.split(".")[0];
+        return org;
+    }
+    
+    var parse = url.split(".");
+    return parse[1];
+}
 
 var constructString = () => {
 
@@ -40,8 +60,7 @@ var constructString = () => {
             result_string += time + '\t';
 
             // Add organization 
-            //const organization = getOrganizatin();
-            const organization = "Google";
+            const organization = getOrganizatin(tabs[0].url);
             result_string += organization + '\t';
 
             // Add URL
