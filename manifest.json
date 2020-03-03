@@ -7,6 +7,16 @@
         "default_popup": "index.html"
         
     },
+    "content_scripts": [ 
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ],
+    "background": {
+        "scripts": ["content.js"], 
+        "persistent": false
+    },
     "commands": {
         "_execute_browser_action": {
             "suggested_key": {
@@ -19,9 +29,10 @@
     "permissions": [
         "activeTab",
         "contextMenus",
-        "storage"
+        "storage", 
+        "tabs"
     ],
-    "content_security_policy": "script-src 'self' 'unsafe-inline'; object-src 'self'",
+    "content_security_policy": "script-src 'self'; object-src 'self'",
     "icons": {
         "16": "16.png",
         "32": "32.png",

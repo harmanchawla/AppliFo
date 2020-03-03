@@ -22,7 +22,7 @@ function handleSheetsLink() {
 
 function handleChange() {
 
-    const result_string = "";
+    let result_string = "";
 
     if (document.getElementById('input-date').checked) {
         const datetime = new Date();
@@ -31,7 +31,7 @@ function handleChange() {
 
         console.log(result_string);
     }
-    
+
     if (document.getElementById('input-time').checked) {
         const datetime = new Date();
         const time = datetime.getHours() + ':' + datetime.getMinutes();
@@ -40,17 +40,19 @@ function handleChange() {
         console.log(result_string);
     }
 
-    if (document.getElementById('input-id').checked) {
+    if (document.getElementById('input-org').checked) {
         const organization = "Google";
         result_string += organization + "\t";
 
         console.log(result_string);
     }
-    
-    if (document.getElementById('get-page-link').checked) {
-        const currURL = window.location.href;
-        result_string += currURL + '\t';
 
+    if (document.getElementById('get-current-link').checked) {
+        chrome.tabs.query({ 'active': true, 'lastFocusedWindow': true }, function (tabs) {
+            var url = tabs[0].url;
+            console.log("URL: ", url);
+            result_string += url + '\t';
+        });
         console.log(result_string);
     }
 
@@ -74,16 +76,37 @@ function handleChange() {
     }
 
     return copyString;
-    
+
 }
 
-document.addEventListener('DOMContentLoaded', ()=> {
-    document.getElementbyID('main-form').addEventListener('change', (event) => {
-        const clipboardString = handleChange();
-        document.getElementById('message').textContent = clipboardString;
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM was loaded.")
 
-    });
-    document.getElementById('open-sheets').addEventListener('click', handleSheetsLink);
+    window.onload = function() {
+        const mainForm = document.getElementById('main-form');
+        if (mainForm) {
+            mainForm.addEventListener('change', (event) => {
+                const clipboardString = handleChange();
+                document.getElementById('message').textContent = clipboardString;
+
+            });
+        }
+        
+        const openBtn = document.getElementById('open-sheets');
+        if (openBtn) {
+            openBtn.addEventListener('click', handleSheetsLink);
+        }
+    }
 });
 
 
+// document.getElementbyID('main-form').addEventListener('change', (event) => {
+//     console.log("Form was changed.")
+//     const clipboardString = handleChange();
+//     document.getElementById('message').textContent = clipboardString;
+
+// });
+
+// document.getElementById('open-sheets').addEventListener('click', handleSheetsLink);
+
+console.log("Loaded Javascript File.")
