@@ -25,21 +25,21 @@ var getOrganizatin = (url) => {
 
     if (url.includes("boards.greenhouse.io") || url.includes("jobs.lever.co")) {
         var parse = url.split("/");
-        return parse[3];
+        return firstLetterCap(parse[3]);
     }
     if (url.includes("myworkdayjobs")) {
         var parse = url.split("/");
         var org = parse[2].split(".")[0];
-        return org;
+        return firstLetterCap(org);
     }
-    if (url.includes(taleo)) {
+    if (url.includes("taleo")) {
         var parse = url.split("/");
         var org = parse.split(".")[0];
-        return org;
+        return firstLetterCap(org);
     }
     
     var parse = url.split(".");
-    return parse[1];
+    return firstLetterCap(parse[1]);
 }
 
 var constructString = () => {
@@ -122,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-
 
 console.log("Loaded Javascript File.")
 
