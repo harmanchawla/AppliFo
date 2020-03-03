@@ -1,14 +1,16 @@
 function handleSheetsLink() {
     chrome.storage.sync.get(['key'], function (result) {
-        console.log('URL value is ' + result.key);
-        chrome.tabs.create({ url: result.key });
-        return true;
+        if (result.key === undefined) {
+            chrome.tabs.create({ url: "https://docs.google.com/spreadsheets"})
+        } else {
+            console.log('URL value is ' + result.key);
+            chrome.tabs.create({ url: result.key });
+        }
+        
     });
-    return false;
 }
 
 var save_sheets_url = (e) => {
-    document.getElementById('typed-url').value = e.target.value;
     chrome.storage.sync.set({ key : e.target.value }, function () {
         console.log('URL is set to ' + value);
     });
@@ -23,7 +25,12 @@ var addZero = (num) => {
 
 
 var firstLetterCap = (str) => {
-   return str.charAt(0).toUpperCase() + str.slice(1)
+    try {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    } catch(e) {
+        return str;
+    }
+   
 }
 
 var getOrganizatin = (url) => {
@@ -39,7 +46,7 @@ var getOrganizatin = (url) => {
     }
     if (url.includes("taleo")) {
         var parse = url.split("/");
-        var org = parse.split(".")[0];
+        var org = parse[1].split(".")[0];
         return firstLetterCap(org);
     }
     
@@ -90,10 +97,15 @@ async function copyString() {
 
 var openSettingPanel = () => {
     var panel = document.getElementsByClassName('panel')[0];
+    document.getElementById('display-url');
     if (panel.style.display === "block") {
         panel.style.display = "none";
     } else {
         panel.style.display = "block";
+        chrome.storage.sync.get(['key'], function (result) {
+            document.getElementById('display-url').value = result.key;
+        });
+
     }
 }
 
@@ -117,16 +129,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }     
 
         const settingBtn = document.getElementById('setting-btn');
-        const sheet_url_field = document.getElementById('sheets-url');
         if (settingBtn) {
             settingBtn.addEventListener('click', openSettingPanel);
             
         }
+
+        const sheet_url_field = document.getElementById('sheets-url');
         if (sheet_url_field) {
-            sheet_url_field.addEventListener('input', save_sheets_url);
+            sheet_url_field.addEventListener('click', save_sheets_url);
         }
     }
 });
-
-console.log("Loaded Javascript File.")
 

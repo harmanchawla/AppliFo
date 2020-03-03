@@ -201,6 +201,7 @@ span.link-text {
 
 .message {
   color: grey;
+  background: white;
 }
 
 .panel {
@@ -210,7 +211,7 @@ span.link-text {
   overflow: hidden;
 }
 
-#sheet-url {
+#display-url {
   width: 100%;
   height: 9%;
   max-height: 30px;
@@ -225,7 +226,7 @@ span.link-text {
   color: grey;
 }
 
-input#sheet-url:focus{
+input#display-url:focus{
   color: grey;
   outline: none;
 
