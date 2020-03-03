@@ -9,7 +9,7 @@ Support for Google Sheets API coming soon.
 
 ## Installing
 
-Step 1: Download or clone the repository
-Step 2: In your Chrome browser open "chrome://extensions/"
-Step 3: Click on "Load Unpacked"
-Step 4: Navigate to the "Production" directory in the "Applifo" folder and hit "Select"
+Step 1: Download or clone the repository <br />
+Step 2: In your Chrome browser open "chrome://extensions/" <br />
+Step 3: Click on "Load Unpacked" <br />
+Step 4: Navigate to the "Production" directory in the "Applifo" folder and hit "Select" 
