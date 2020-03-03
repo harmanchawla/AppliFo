@@ -21,6 +21,11 @@ var addZero = (num) => {
     return num;
 }
 
+
+var firstLetterCap = (str) => {
+   return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
 var getOrganizatin = (url) => {
 
     if (url.includes("boards.greenhouse.io") || url.includes("jobs.lever.co")) {
