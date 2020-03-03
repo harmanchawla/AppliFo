@@ -1,5 +1,5 @@
 function handleSheetsLink() {
-    chrome.storage.sync.get(['key'], function (result) {
+    chrome.storage.local.get(['key'], function (result) {
         if (result.key === undefined) {
             chrome.tabs.create({ url: "https://docs.google.com/spreadsheets"})
         } else {
@@ -11,9 +11,35 @@ function handleSheetsLink() {
 }
 
 var save_sheets_url = (e) => {
-    chrome.storage.sync.set({ key : e.target.value }, function () {
+    chrome.storage.local.set({ key : e.target.value }, function () {
         console.log('URL is set to ' + value);
     });
+}
+
+var openSettingPanel = () => {
+    var panel = document.getElementsByClassName('panel')[0];
+    document.getElementById('display-url');
+    if (panel.style.display === "block") {
+        panel.style.display = "none";
+    } else {
+        panel.style.display = "block";
+        chrome.storage.local.get(['key'], function (result) {
+            if (result.key != undefined) {
+                document.getElementById('display-url').value = result.key;
+            }
+        });
+    }
+}
+
+async function copyString() {
+    try {
+        const result_string = document.getElementById("data-string").value;
+        await navigator.clipboard.writeText(result_string);
+
+        document.getElementById('message').textContent = "Copied to clipboard.";
+    } catch (err) {
+        document.getElementById('message').textContent = "Sorry! We couldn't copy the string.";
+    }
 }
 
 var addZero = (num) => {
@@ -84,30 +110,9 @@ var constructString = () => {
     });
 }
 
-async function copyString() {
-    try {
-        const result_string = document.getElementById("data-string").value;
-        await navigator.clipboard.writeText(result_string);
 
-        document.getElementById('message').textContent = "Copied to clipboard.";
-    } catch (err) {
-        document.getElementById('message').textContent = "Sorry! We couldn't copy the string.";
-    }
-}
 
-var openSettingPanel = () => {
-    var panel = document.getElementsByClassName('panel')[0];
-    document.getElementById('display-url');
-    if (panel.style.display === "block") {
-        panel.style.display = "none";
-    } else {
-        panel.style.display = "block";
-        chrome.storage.sync.get(['key'], function (result) {
-            document.getElementById('display-url').value = result.key;
-        });
 
-    }
-}
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log("DOM was loaded.")
